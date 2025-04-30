@@ -99,9 +99,13 @@ def chat_with_model(user_message, chat_history, rating):
                 result = llm.invoke(user_message)
                 result += "\n\n (this took me a while... sorry!)\n" # TODO: You can remove this
 
+            result += "\n\n This model used: WEB SEARCH MODE\n" # TODO: You can remove this
+
         else:
             print("--- I am not searching because I am bad at my job... :( ---")
             result = llm.invoke(user_message)
+
+            result += "\n\n This model used: DEFAULT MODE\n" # TODO: You can remove this
 
     except OutputParserException:
         # fallback: just ask the model directly
@@ -122,17 +126,17 @@ def change_stars(rating):
         rating = 2.5
 
     if (rating < 1 and rating >= 0):
-        stars = "## ⠀"
+        stars = "<div style='display: flex; margin: auto; text-align: center;'> <h2 style='display: block;margin: auto; text-align: center;'>-----</h2> </div>"
     elif (rating < 2 and rating >= 1):
-        stars = "## ★"
+        stars = "<div style='display: flex; margin: auto; text-align: center;'> <h2 style='display: block;margin: auto; text-align: center;'>★----</h2> </div>"
     elif (rating < 3 and rating >= 2):
-        stars = "## ★★"
+        stars = "<div style='display: flex; margin: auto; text-align: center;'> <h2 style='display: block;margin: auto; text-align: center;'>★★---</h2> </div>"
     elif (rating < 4 and rating >= 3):
-        stars = "## ★★★"
+        stars = "<div style='display: flex; margin: auto; text-align: center;'> <h2 style='display: block;margin: auto; text-align: center;'>★★★--</h2> </div>"
     elif (rating < 5 and rating >= 4):
-        stars = "## ★★★★"
+        stars = "<div style='display: flex; margin: auto; text-align: center;'> <h2 style='display: block;margin: auto; text-align: center;'>★★★★-</h2> </div>"
     elif (rating >= 5):
-        stars = "## ★★★★★"
+        stars = "<div style='display: flex; margin: auto; text-align: center;'> <h2 style='display: block;margin: auto; text-align: center;'>★★★★★</h2> </div>"
 
     return stars
 
@@ -152,12 +156,12 @@ with gr.Blocks(theme=main_theme) as demo:
         msg = gr.Textbox(placeholder="Type your message here...", label="Your message")
         send = gr.Button("Send")
 
-    stars = gr.Markdown("## ⠀")
+    stars = gr.Markdown("<div style='display: flex; margin: auto; text-align: center;'> <h2 style='display: block;'> </h2> </div>")
     
     rate = gr.Slider(0, 5, value=-1, step=1, label="Rating System", info="## How do you rate this response?",
                     show_label = False, show_reset_button = False)
-    
 
+    
     # TODO: this is just for show and can be deleted
     rate.input( 
         fn=change_stars, 
