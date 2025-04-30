@@ -1,170 +1,27 @@
-# 🌐 ModelWorks
-<h2 style="font-size: 24px;">Introduction 🌀</h2>  
-
- 
+# 🌐 ModelWorks : `model_confidence_logic_demo`
+<h2 style="font-size: 24px;"> Purpose of Branch 🌀</h2>  
 
 <p style="font-size: 16px;">  
 
-  
+This is a demonstration of the logic of the JoeyLLM interface, which aims to switch between different models (JoeyLLM, Gemma3, and OpenAI) depending on user satisfaction.  The model will switch in and out of web searching, **which is not intended for the final product**.  However, since this is a demonstration, this will suffice to show progress regarding this component.
 
-Modelworks is a collaborative team dedicated to developing practical, impactful AI solutions that address real-world challenges. Our mission is to bridge the gap between advanced artificial intelligence research and everyday applications by creating specialized models tailored to specific tasks.  
+This demonstration shows model "confidence" being done by using a five-star system, which the user can control with a slider.  
 
-  
+This uses code from the [web_search](https://github.com/southern-cross-ai/ModelWorks/tree/web_search) branch in order to be more simplified.  This will be improved upon with future commits.
 
 </p>  
 
-  
+<h2 style="font-size: 24px;"> 👾 How to Use </h2>  
 
 <p style="font-size: 16px;">  
 
-  
+This is effective when running localhost and your IDE in tandem.  Otherwise, the file currently shows how the logic works switching in and out of **web searching**.  
 
-By leveraging a robust development pipeline and integrating state-of-the-art techniques, we ensure that each solution is innovative, efficient, and scalable. Our focus is on transforming theoretical concepts into practical tools that can drive meaningful change in various industries.  
+This will be done as so:
 
-  
-
-</p>  
-
-  
-
-   
-
-  
-
-<h2 style="font-size: 24px;">🫧 Our Approach</h2>  
-
-  
-
-<p style="font-size: 16px;">  
-
-  
-
-Our process begins with a comprehensive analysis of the problem domain, followed by the design of a custom AI pipeline that includes data collection, model training, and performance optimization. We embrace agile methodologies to iterate quickly and adapt our solutions as new challenges emerge.  
-
-  
-
-</p>  
-
-  
-
-<p style="font-size: 16px;">  
-
-  
-
-The pipeline is engineered to support end-to-end development, ensuring seamless integration between different stages of the project. Continuous testing and refinement are core principles, enabling us to maintain high standards of quality throughout the development lifecycle.  
-
-  
-
-</p>  
-
-  
-
-   
-
-  
-
-<h3 style="font-size: 24px;">Environment</h3>  
-
-<ul style="font-size: 16px;">  
-
-  <li>Docker</li>  
-
-  <li>VSCode</li>  
-
-  <li>Python</li> 
-
-  <ul style="font-size: 16px;">  
-
-  <li> Pytorch </li> 
-
-  </ul> 
-
-</ul>  
-
-<h3 style="font-size: 24px;">Storage</h3>  
-
-  <li>Chroma</li>   
-
-<h3 style="font-size: 24px;">LLM</h3>  
-
-  <li>Ollama</li>  
-
-  <li>Langchain</li>   
-
-<h3 style="font-size: 24px;">UI</h3>   
-
-<li>Gradio</li>  
-
-   
-
-  
-
-<h2 style="font-size: 24px;">Team Members 👾</h2>  
-
-  
-
-<ul style="font-size: 16px;">  
-
-  
-
-  <li>Tom – Bachelor of Advanced Computing - Scribe</li>  
-
-  
-
-  <li>Xuan – Bachelor of Software Engineering – Project Manager</li>  
-
-  
-
-  <li>Jana – Bachelor of Software Engineering - Monitor</li>  
-
-  
-
-  <li>Arnav – Bachelor of Software Engineering - Spokesperson</li>  
-
-  
-
-  <li>Scarlett – Master of Computing - Checker</li>  
-
-  
-
-  <li>Josh – Bachelor of Computing - Deputy</li>  
-
-  
-
-  <li>Jaylee – Master of Computing - Coordinator</li>  
-
-  
-
-</ul>  
-
-  
-
-   
-
-  
-
-<h2 style="font-size: 24px;">☁️ Deliverables</h2>  
-
-  
-
-<p style="font-size: 16px;">  
-
-  
-
-Our project aims to produce a set of comprehensive deliverables that demonstrate our technical expertise and provide practical, end-to-end AI solutions. The main focus of development being a pipeline for specialised AI models will allow for many opportunities to address real-world problems, ideally along the lines of: 
-
-  
-
-* Phishing Website Detector - Using ML techniques to protect users from fraudulent websites. 
-
-* Intrusion Detection System - Enhancing network security through AI-driven threat detection. 
-
-* Suicide Ideation Detector - Leveraging natural language processing to identify at-risk individuals from text. 
-
-  
-
-We will also ensure that this pipeline will have a user interface that enhances interaction and usability, along with a reliable database management system that supports secure data handling.  
-
-  
+* If the user has not touched the slider, it is assumed that they are satisfied with the results, and thus the model confidence value is set at 2.5 (half of 5).
+* If the user drags the slider to a value of 3 or over, the model will stick with web searching.
+* If the user drags the slider to a value of 2 or under, the model will switch out of web searching and back into its default settings.
+* The model can switch in and out of web searching whenever the user changes the slider.
 
 </p> 
